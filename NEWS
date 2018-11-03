@@ -1,5 +1,14 @@
-2018-11-3 Initialization
+2018-11-3 22:25 Complete 1057
+
+I modify the behavior of append(), before it sorts only the last two
+nodes until I met the following circumstance:
+1, 3, 4 <- 2
+So the new algorithm is to sort all nodes when appending a new one
+
+AC: 1014, 1057
+
+2018-11-3 13:20 Initialization
 
 Sources were added to git repository
 
-Solutions: 1014 (AC), 1057 (Wrong)
+AC: 1014

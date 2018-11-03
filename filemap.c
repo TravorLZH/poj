@@ -34,22 +34,28 @@ void do_indents(void)
 /* Add file to file list */
 void append(struct xfile *f,char *stuff)
 {
-	if(f->next){
-		append(f->next,stuff);
+	struct xfile *tmp=NULL;
+	/* If current node is already empty, store it here */
+	if(f->name[0]=='\0'){
+		strcpy(f->name,stuff);
 		return;
 	}
-	if(f->name[0]!='\0'){
-		/* Create new node if not exists */
+	/* If the inserting node should precede current node */
+	if(strcmp(f->name,stuff)>0){
+		/* Insert it here */
+		tmp=f->next;
+		f->next=(struct xfile*)malloc(sizeof(struct xfile));
+		f->next->next=tmp;
+		strcpy(f->next->name,f->name);
+		strcpy(f->name,stuff);
+		return;
+	}
+	if(f->next==NULL){
 		f->next=(struct xfile*)malloc(sizeof(struct xfile));
 		f->next->next=NULL;
-		if(strcmp(stuff,f->name)<0){
-			strcpy(f->next->name,f->name);
-		}else{
-			f=f->next;
-		}
+		f->next->name[0]='\0';
 	}
-	/* Store the content */
-	strcpy(f->name,stuff);
+	append(f->next,stuff);
 }
 
 /* Print everything */
@@ -82,17 +88,13 @@ int handle_dir(int root)
 	files->name[0]='\0';
 	files->next=NULL;
 	indent++;
-scan:	gets(buf);
+scan:	scanf("%s",buf);
 	if(buf[0]==XEND){
 		destroy(files);
 		exit(0);
 	}
 	if(root){
-		set++;
-		if(set>1){
-			putchar('\n');
-		}
-		printf("DATA SET %d:\n",set);
+		printf("DATA SET %d:\n",++set);
 		puts("ROOT");
 		root=0;
 	}
@@ -125,6 +127,7 @@ int main(void)
 {
 loop:
 	handle_dir(1);
+	putchar('\n');
 	goto loop;
 	return 0;
 }
