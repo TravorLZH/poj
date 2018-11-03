@@ -1,0 +1,7 @@
+*
+!*.*
+!Makefile
+!README
+!NEWS
+*.exe
+*.o
