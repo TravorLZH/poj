@@ -1,4 +1,4 @@
-TARGETS=dividing filemap
+TARGETS=average dividing webnav filemap
 
 all:	$(TARGETS)
 
