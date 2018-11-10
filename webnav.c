@@ -5,41 +5,38 @@
 #include <stdio.h>
 #include <string.h>
 
-char back[64][100];
-char forw[64][100];
-int a=0;
-int b=0;
+char sites[101][71]={"http://www.acm.org/"};
+char cmd[8];
 
 int main(void)
 {
-	char cmd[16];
-	char url[64];
-	strcpy(back[0],"http://www.acm.org/");
+	int i=0;
 loop:	scanf("%s",cmd);
-	switch(cmd[0]){
+	switch(*cmd){
 	case 'Q':
 		return 0;
 	case 'V':
-		scanf("%s",url);
-		strcpy(back[++a],url);
-		b=0;
+		scanf("%s",sites[++i]);
+		sites[i+1][0]='\0';
 		break;
 	case 'B':
-		if(a==0){
+		i--;
+		if(i<0){
 			puts("Ignored");
+			i++;
 			goto loop;
 		}
-		strcpy(forw[++b],back[a--]);
 		break;
 	case 'F':
-		if(b==0){
+		i++;
+		if(sites[i][0]=='\0'){
 			puts("Ignored");
+			i--;
 			goto loop;
 		}
-		strcpy(back[++a],forw[b--]);
 		break;
 	}
-	puts(back[a]);
+	puts(sites[i]);
 	goto loop;
 	return 0;
 }
