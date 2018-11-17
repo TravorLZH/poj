@@ -1,4 +1,4 @@
-TARGETS=average dividing webnav filemap
+TARGETS=average telephone dividing webnav filemap
 
 all:	$(TARGETS)
 

@@ -1,3 +1,31 @@
+2018-11-17 10:24 Complete 1002
+
+I have been struggling with this problem for 1 week.
+Here are some experiences.
+
+I am using a binary search tree model to set up the telephone number storage
+
+At first I stored those numbers as strings, but the OnlineJudge says that it
+was too slow to be executed
+
+Later I stored these as integers. The printing line is like this:
+
+	printf("%d-%d %d\n",f->val/10000,f->val%10000,f->rep);
+
+But the problem occurs when I meet telephone numbers that start with zeroes
+
+To solve this ultimate problem, I changed the formatting character:
+
+	printf("%03d-%04d %d\n",f->val/10000,f->val%10000,f->rep);
+
+So extra zero will be preceeded if the quotient consists of less than 3 digits
+
+2018-11-10 15:59 Using one array is less complicated
+
+The previous solution of 1028 only works at the site `acm.wust.edu.cn' but
+not for POJ, so I adjust the code to one array instead of 2 stacks because
+stacks mess up everything
+
 2018-11-10 11:48 Complete 1004 & 1028
 
 I put the previously solved problem's answer in this directory
