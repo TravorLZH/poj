@@ -1,3 +1,19 @@
+2018-11-17 12:28 Complete 1035
+
+POJ 1035 is about correcting spelling. To implement this, I:
+
+1. Check if the word is already in the dictionary.
+2. If not, I enter a loop where words in dictionary are iterated
+3. In the loop, check if the word is only slightly (one byte) different from
+the dictionary.
+4. Or if the word can just add one character to match the correct one
+5. Or if the word can just delete one character to match the correct spelling
+
+I use one function to implement 4 and 5 because 4 mean if the correct one can
+just delete one character to match the wrong spelling.
+
+See also spellchecker.c
+
 2018-11-17 10:24 Complete 1002
 
 I have been struggling with this problem for 1 week.

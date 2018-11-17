@@ -1,4 +1,4 @@
-TARGETS=average telephone dividing webnav filemap
+TARGETS=average telephone dividing webnav spellchecker filemap
 
 all:	$(TARGETS)
 
