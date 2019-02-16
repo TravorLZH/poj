@@ -1,4 +1,4 @@
-TARGETS=average telephone dividing webnav spellchecker filemap
+TARGETS=average telephone dividing webnav spellchecker filemap hangover
 
 all:	$(TARGETS)
 
